@@ -12,6 +12,9 @@ const CardContainer = styled.div`
   height: 80vh;
   width: 100%;
   background-color: rgb(255, 204, 0);
+  @media screen and (max-width: 540px) {
+    height: 100vh;
+  }
 `
 const Card = styled.div`
   margin: auto;
@@ -21,6 +24,10 @@ const Card = styled.div`
   border-radius: 15px;
   padding: 1.5rem;
   background-color: rgb(255, 255, 255);
+
+  @media screen and (max-width: 540px) {
+    margin: auto 2rem;
+  }
 `
 const CardBody = styled.div`
   padding: 2rem 0 0.5rem 0;
@@ -39,11 +46,19 @@ const CardTextHeading = styled.a`
   padding: 0 !important;
   color: rgb(255, 204, 0);
   font-weight: 600;
+
+  @media screen and (max-width: 540px) {
+    font-size: 1.2rem;
+  }
 `
 
 const CardBodyText = styled.p`
   font-size: 1.2rem;
   color: rgb(155, 155, 155);
+
+  @media screen and (max-width: 540px) {
+    font-size: 0.8rem;
+  }
 `
 const CardFooter = styled.div`
   display: flex;
