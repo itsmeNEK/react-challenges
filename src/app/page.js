@@ -7,7 +7,7 @@ import Avatar from "@/assets/challenge1/images/image-avatar.webp"
 
 import styled from "styled-components"
 
-const CardContainer = styled.div`
+const Container = styled.div`
   display: flex;
   height: 80vh;
   width: 100%;
@@ -70,9 +70,13 @@ const CardFooter = styled.div`
 export default function Page() {
   return (
     <>
-      <CardContainer>
+      <Container>
         <Card>
-          <Image className={styles.card_header} src={CardHeaderImg} />
+          <Image
+            className={styles.card_header}
+            src={CardHeaderImg}
+            alt="Card Header"
+          />
           <CardBody>
             <Button>Learning</Button>
             <h5>Publish 21 Dec 2023</h5>
@@ -83,15 +87,16 @@ export default function Page() {
             </CardBodyText>
           </CardBody>
           <CardFooter>
-            <Image src={Avatar} className={styles.avatar} />
+            <Image src={Avatar} className={styles.avatar} alt="Avatar" />
             <p>Greg Hooper</p>
           </CardFooter>
         </Card>
-      </CardContainer>
+      </Container>
       {/* <div className={styles.container}>
         <div className={styles.card}>
           <div className={styles.card_header}>
-            <Image src={CardHeader} />
+            <Image src={CardHeader}
+            alt="Card Header" />
           </div>
           <div className={styles.card_body}>
             <button className={styles.button}>Learning</button>
@@ -105,7 +110,7 @@ export default function Page() {
             </p>
           </div>
           <div className={styles.card_footer}>
-            <Image src={Avatar} className={styles.avatar} />
+            <Image src={Avatar} className={styles.avatar} alt="Avatar"  />
             <p>Greg Hooper</p>
           </div>
         </div>
