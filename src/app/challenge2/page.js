@@ -82,7 +82,7 @@ export default function Page() {
 const bg_img = {
   width: "100%",
   position: "absolute",
-  top: 74,
+  top: 100,
   objectFit: "cover",
 }
 const star_icon = {
