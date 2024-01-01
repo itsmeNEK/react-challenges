@@ -1,6 +1,7 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
+import { useRouter } from "next/navigation"
 import styled from "styled-components"
 import SideImage from "@/assets/challenge3/images/illustration-sign-up-desktop.svg"
 import Image from "next/image"
@@ -41,18 +42,23 @@ const Container = styled.div`
     height: 100vh;
   }
 `
-
 const Card = styled.div`
   display: flex;
   margin: auto;
-  width: 50rem;
   border-radius: 25px;
   padding: 1rem;
   background-color: rgb(255, 255, 255);
 `
+const LabelContainer = styled.div`
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+`
 
 const CardLeft = styled.div`
-  width: 60%;
+  width: 28rem;
   padding: 0 40px;
   margin: auto;
 `
@@ -75,19 +81,91 @@ const ListItem = styled.li`
   padding-bottom: 5px;
   margin: 5px 0;
 `
+const StyledInput = styled.input`
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #333;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: #555;
+    outline: none;
+  }
+`
+
+const FormLabel = styled.label`
+  font-family: "roboto", sans-serif;
+`
+const ErrorMessage = styled.label`
+  font-family: "roboto", sans-serif;
+  color: red;
+`
+
+const StyledButton = styled.button`
+  background-color: hsl(234, 29%, 20%);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: hsl(4, 100%, 67%);
+    box-shadow: 0 5px 15px hsl(4, 100%, 67%);
+  }
+`
+
 const ListItemContent = [
   "Product discovery and building what matters",
   "Measuring to ensure updates are a success",
   "And much more!",
 ]
 
-const renderListItemContent = ListItemContent.map((item) => (
-  <ListItem key={item}>
-    <SuccessIcon />
-    {item}
-  </ListItem>
-))
 export default function page() {
+  const router = useRouter()
+  const [email, setEmail] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
+  const [isValid, setIsValid] = useState(false)
+
+  const renderListItemContent = ListItemContent.map((item) => (
+    <ListItem key={item}>
+      <SuccessIcon />
+      {item}
+    </ListItem>
+  ))
+
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (re.test(String(email).toLowerCase())) {
+      setErrorMessage("")
+      return true
+    }
+    setErrorMessage("Valid email required")
+    return false
+  }
+  const handleInputChange = (e) => {
+    setEmail(e.target.value)
+    setIsValid(validateEmail(e.target.value))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setIsValid(validateEmail(e.target.value))
+    if (isValid) {
+      router.push(`/challenge3/confirm?data=${encodeURIComponent(email)}`)
+    }
+  }
   return (
     <Container>
       <Card>
@@ -97,6 +175,23 @@ export default function page() {
             Join 60,000+ product manager receiving monthly updates on:
           </CardText>
           <List>{renderListItemContent}</List>
+          <form onSubmit={handleSubmit}>
+            <LabelContainer>
+              <FormLabel htmlFor="email">Email Address</FormLabel>
+              <ErrorMessage>{errorMessage}</ErrorMessage>
+            </LabelContainer>
+            <StyledInput
+              style={!isValid && email ? IsNotValidStyle : IsValidStyle}
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+              placeholder="example@example.com"
+            />
+            <StyledButton type="submit">
+              Subscribe to monthly newsletter
+            </StyledButton>
+          </form>
         </CardLeft>
         <div>
           <Image src={SideImage} alt="image" style={side_image}></Image>
@@ -112,4 +207,14 @@ const side_image = {
   borderRadius: "none",
   top: 100,
   objectFit: "cover",
+}
+
+const IsNotValidStyle = {
+  backgroundColor: "#FFCCCC",
+  border: "2px solid red",
+}
+
+const IsValidStyle = {
+  border: "2px solid #ccc",
+  backgroundColor: "#f8f8f8",
 }
