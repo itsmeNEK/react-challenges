@@ -46,7 +46,9 @@ export default function Page() {
   return (
     <>
       <Styled.Navbar>
-        <Styled.NavbarBrand>React</Styled.NavbarBrand>
+        <Styled.NavbarBrand onClick={() => router.push("/")}>
+          React
+        </Styled.NavbarBrand>
         <Styled.NavbarContent>
           <Styled.NavbarItems>
             {/* newbie */}

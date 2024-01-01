@@ -16,6 +16,7 @@ export const NavbarContent = styled.div`
 `
 export const NavbarBrand = styled.a`
   font-family: "Roboto", sans-serif;
+  cursor: pointer;
   font-weight: bold;
   font-size: 2.5rem;
 `
