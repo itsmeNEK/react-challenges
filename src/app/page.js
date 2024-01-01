@@ -70,51 +70,7 @@ const CardFooter = styled.div`
 export default function Page() {
   return (
     <>
-      <Container>
-        <Card>
-          <Image
-            className={styles.card_header}
-            src={CardHeaderImg}
-            alt="Card Header"
-          />
-          <CardBody>
-            <Button>Learning</Button>
-            <h5>Publish 21 Dec 2023</h5>
-            <CardTextHeading>HTML & CSS foundations</CardTextHeading>
-            <CardBodyText>
-              These languages are the backbone of every website, defining
-              structure, content, and presentation.
-            </CardBodyText>
-          </CardBody>
-          <CardFooter>
-            <Image src={Avatar} className={styles.avatar} alt="Avatar" />
-            <p>Greg Hooper</p>
-          </CardFooter>
-        </Card>
-      </Container>
-      {/* <div className={styles.container}>
-        <div className={styles.card}>
-          <div className={styles.card_header}>
-            <Image src={CardHeader}
-            alt="Card Header" />
-          </div>
-          <div className={styles.card_body}>
-            <button className={styles.button}>Learning</button>
-            <h5>Publish 21 Dec 2023</h5>
-            <a href="">
-              <h3>HTML & CSS foundations</h3>
-            </a>
-            <p className={styles.body_text}>
-              These languages are the backbone of every website, defining
-              structure, content, and presentation.
-            </p>
-          </div>
-          <div className={styles.card_footer}>
-            <Image src={Avatar} className={styles.avatar} alt="Avatar"  />
-            <p>Greg Hooper</p>
-          </div>
-        </div>
-      </div> */}
+      <h1>Hello</h1>
     </>
   )
 }
