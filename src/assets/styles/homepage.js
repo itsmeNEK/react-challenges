@@ -1,18 +1,77 @@
 import styled from "styled-components"
-
+const { motion } = require("framer-motion")
 export const HeaderContainer = styled.div`
   width: 100%;
-  height: 950px;
+  height: 1050px;
   /* @media screen and (max-width: 540px) {
     height: 100vh;
   } */
 `
 
 export const HeaderBG = styled.div`
+  display: block;
   width: 100%;
-  height: 700px;
+  height: 800px;
   background-color: hsl(256, 26%, 20%);
 `
+export const IntroContainer = styled(motion.div)`
+  width: 80%;
+  margin: auto;
+  position: relative;
+  top: 30%;
+`
+export const BillImgContainer = styled(motion.div)``
+export const LineDivider = styled.hr`
+  margin: 0;
+  height: 1px;
+  width: 300px;
+  color: hsl(216, 30%, 68%);
+  background-color: hsl(216, 30%, 68%);
+`
+export const IntroTitle = styled.h1`
+  font-size: 5rem;
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  margin-bottom: 0;
+`
+export const IntroParagraph = styled.p`
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  line-height: 25px;
+  width: 950px;
+  font-size: 18px;
+  color: lightgray;
+`
+
+export const ObjectiveContainer = styled(motion.div)`
+  width: 80%;
+  margin: auto;
+  margin-top: 15rem;
+  margin-bottom: 15rem;
+`
+export const SectionTitle = styled(motion.h1)`
+  font-size: 3rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: hsl(256, 26%, 20%);
+`
+export const ObjectivesGridContainer = styled.div`
+  margin: 4rem 0;
+  display: flex;
+  justify-content: center;
+`
+export const Objectives = styled.div`
+  width: 30%;
+  margin: 15px 3rem;
+`
+export const ObjectivesTitle = styled.h1`
+  font-size: 1.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+`
+export const ObjectivesText = styled.p`
+  color: gray;
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+`
+
 const PatternRight = {
   display: "flex",
   position: "absolute",
@@ -26,6 +85,7 @@ const PatternLeft = {
   left: 0,
   top: 600,
 }
+
 export const IntroPatternRight = () => {
   return (
     <svg
@@ -61,6 +121,50 @@ export const IntroPatternLeft = () => {
         <path d="M-116.684 111.184c-40.295-12.596-81.728-33.603-124.147 4.768-42.419 38.371-69.087 71.984-51.865 115.475 17.221 43.491 87.518 16.402 107.943 55.273 20.425 38.87-24.453 74.148-5.105 108.743s34.225 56.767 96.404 34.77c62.179-21.996 56.446-77.965 103.73-110.739 47.284-32.774 98.442-81.839 28.236-169.388-70.207-87.55-114.901-26.307-155.196-38.902z" />
         <path d="M-111.917 131.046c-32.91-10.295-66.749-27.467-101.393 3.897-34.643 31.365-56.424 58.84-42.358 94.389 14.065 35.549 71.477 13.407 88.158 45.179 16.682 31.772-19.971 60.609-4.17 88.886 15.803 28.277 27.953 46.4 78.735 28.42 50.782-17.979 46.1-63.727 84.718-90.516 38.617-26.79 80.398-66.895 23.06-138.457-57.339-71.562-93.841-21.503-126.75-31.798z" />
         <path d="M-102.775 145.406c-26.718-8.36-54.191-22.305-82.318 3.165-28.127 25.47-45.81 47.78-34.39 76.649 11.419 28.868 58.03 10.887 71.574 36.688 13.544 25.8-16.214 49.217-3.385 72.18 12.83 22.963 22.694 37.68 63.923 23.08 41.229-14.6 37.428-51.75 68.78-73.505C12.762 261.908 46.684 229.34.132 171.228c-46.553-58.112-76.188-17.462-102.907-25.822z" />
+      </g>
+    </svg>
+  )
+}
+
+export const SnappyProcess = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86">
+      <g fill="none" fillRule="evenodd">
+        <circle cx="43" cy="43" r="43" fill="#96A9C6" />
+        <path
+          fill="#FFF"
+          fillRule="nonzero"
+          d="M32 59h1.195l21.072-20.146c.276-.356.123-.534-.46-.534H45.11l9.158-10.786c.276-.356.061-.534-.612-.534h-11.67c-.337 0-.613.119-.888.356l-8.515 14.645c-.061.356.122.534.582.534h8.423L32 59z"
+        />
+      </g>
+    </svg>
+  )
+}
+
+export const AffordablePrices = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86">
+      <g fill="none" fillRule="evenodd">
+        <circle cx="43" cy="43" r="43" fill="#96A9C6" />
+        <path
+          fill="#FFF"
+          fillRule="nonzero"
+          d="M43 27c-8.836 0-16 7.164-16 16s7.164 16 16 16c8.838 0 16-7.164 16-16s-7.162-16-16-16zm4.363 22.178c-.787.883-1.924 1.402-3.41 1.558V53H42.06v-2.252c-2.479-.254-4.012-1.695-4.604-4.32l2.93-.764c.271 1.65 1.17 2.475 2.695 2.475.713 0 1.24-.176 1.576-.53a1.79 1.79 0 00.504-1.279c0-.518-.168-.91-.504-1.176-.336-.267-1.084-.605-2.242-1.015-1.04-.362-1.855-.717-2.441-1.073a4.032 4.032 0 01-1.428-1.48c-.365-.637-.549-1.379-.549-2.223 0-1.107.328-2.105.98-2.992.653-.885 1.68-1.426 3.083-1.623V33h1.894v1.748c2.117.254 3.488 1.451 4.111 3.594l-2.609 1.07c-.51-1.469-1.295-2.203-2.361-2.203-.535 0-.965.164-1.287.492a1.636 1.636 0 00-.487 1.194c0 .476.157.841.47 1.097.31.254.98.569 2.003.946 1.125.41 2.008.798 2.647 1.164a4.16 4.16 0 011.533 1.513c.38.645.572 1.397.572 2.258 0 1.322-.395 2.424-1.182 3.305z"
+        />
+      </g>
+    </svg>
+  )
+}
+export const PeopleFirst = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="86" height="86">
+      <g fill="none" fillRule="evenodd">
+        <circle cx="43" cy="43" r="43" fill="#96A9C6" />
+        <path
+          fill="#FFF"
+          fillRule="nonzero"
+          d="M52.874 49.874l-5.095-2.547c-.48-.24-.779-.724-.779-1.261v-1.804c.122-.149.25-.32.383-.507.661-.933 1.19-1.972 1.576-3.093a2.116 2.116 0 001.241-1.929V36.6c0-.514-.192-1.011-.533-1.4v-2.837c.03-.293.147-2.04-1.116-3.48C47.455 27.633 45.678 27 43.267 27c-2.412 0-4.19.634-5.285 1.883-1.263 1.44-1.145 3.187-1.115 3.48V35.2a2.127 2.127 0 00-.534 1.4v2.133c0 .65.295 1.255.799 1.658.488 1.935 1.51 3.392 1.868 3.86v1.765c0 .516-.282.99-.734 1.237l-4.758 2.596A4.81 4.81 0 0031 54.073V55.8c0 2.531 8.024 3.2 12.267 3.2 4.242 0 12.266-.669 12.266-3.2v-1.623a4.786 4.786 0 00-2.659-4.303z"
+        />
       </g>
     </svg>
   )

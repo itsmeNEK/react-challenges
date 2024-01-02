@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const Navbar = styled.div`
+  width: 80%;
+  margin: auto;
   display: flex;
   align-items: center;
   height: 70px;
