@@ -3,8 +3,42 @@ import * as Style from "@/assets/styles/homepage"
 import BillImage from "@/assets/homepage/bill_bg.png"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import React from "react"
+import { useRouter } from "next/navigation"
 
 export default function Page() {
+  const router = useRouter()
+  const abouts = [
+    {
+      icon: <Style.SnappyProcess key="snappy" />,
+      title: "Snappy Process",
+      text: `Build reusable code is a key practice. Let's go through an
+    introduction to creating reusable code in React.Reusable code is a
+    fundamental concept in programming and is essential for creating
+    maintainable, scalable, and efficient applications.`,
+    },
+    {
+      icon: <Style.AffordablePrices key="affordable" />,
+      title: "Open Source",
+      text: `React.js, a widely-used JavaScript library for building user
+      interfaces, stands as a testament to the power and influence of
+      open source contributions.`,
+    },
+    {
+      icon: <Style.PeopleFirst key="peopleFirst" />,
+      title: "History",
+      text: `React.js, developed and maintained by Facebook, was open-sourced
+      in 2013, marking a strategic shift in software development
+      methodologies.`,
+    },
+  ]
+  const renderAbout = abouts.map((item, index) => (
+    <Style.Objectives key={index}>
+      {item.icon}
+      <Style.ObjectivesTitle>{item.title}</Style.ObjectivesTitle>
+      <Style.ObjectivesText>{item.text}</Style.ObjectivesText>
+    </Style.Objectives>
+  ))
   return (
     <>
       <Style.HeaderContainer>
@@ -46,36 +80,30 @@ export default function Page() {
         <Style.LineDivider />
         <Style.SectionTitle>About React</Style.SectionTitle>
         <Style.ObjectivesGridContainer>
-          <Style.Objectives>
-            <Style.SnappyProcess />
-            <Style.ObjectivesTitle>Snappy Process</Style.ObjectivesTitle>
-            <Style.ObjectivesText>
-              Build reusable code is a key practice. Let's go through an
-              introduction to creating reusable code in React.Reusable code is a
-              fundamental concept in programming and is essential for creating
-              maintainable, scalable, and efficient applications.
-            </Style.ObjectivesText>
-          </Style.Objectives>
-          <Style.Objectives>
-            <Style.AffordablePrices />
-            <Style.ObjectivesTitle>Open Source</Style.ObjectivesTitle>
-            <Style.ObjectivesText>
-              React.js, a widely-used JavaScript library for building user
-              interfaces, stands as a testament to the power and influence of
-              open source contributions.
-            </Style.ObjectivesText>
-          </Style.Objectives>
-          <Style.Objectives>
-            <Style.PeopleFirst />
-            <Style.ObjectivesTitle>History</Style.ObjectivesTitle>
-            <Style.ObjectivesText>
-              React.js, developed and maintained by Facebook, was open-sourced
-              in 2013, marking a strategic shift in software development
-              methodologies.
-            </Style.ObjectivesText>
-          </Style.Objectives>
+          {renderAbout}
         </Style.ObjectivesGridContainer>
       </Style.ObjectiveContainer>
+      <Style.ContactContainer
+        initial={{ y: 300 }}
+        whileInView={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <Style.ContactPattern />
+        <Style.ContactTitle>
+          Find out more <br />
+          about me
+        </Style.ContactTitle>
+        <Style.ContactMeBtn
+          onClick={() => {
+            router.push(
+              "https://www.linkedin.com/in/bill-zhedrick-gaspar-644957240/"
+            )
+          }}
+        >
+          View LinkedIn
+        </Style.ContactMeBtn>
+      </Style.ContactContainer>
     </>
   )
 }
