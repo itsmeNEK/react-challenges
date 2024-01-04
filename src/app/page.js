@@ -3,11 +3,25 @@ import * as Style from "@/assets/styles/homepage"
 import BillImage from "@/assets/homepage/bill_bg.png"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
 export default function Page() {
   const router = useRouter()
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 540)
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 540)
+  }
+  useEffect(() => {
+    // Attach event listener for window resize
+    window.addEventListener("resize", handleResize)
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
   const abouts = [
     {
       icon: <Style.SnappyProcess key="snappy" />,
@@ -33,7 +47,14 @@ export default function Page() {
     },
   ]
   const renderAbout = abouts.map((item, index) => (
-    <Style.Objectives key={index}>
+    <Style.Objectives
+      key={index}
+      
+      initial={{ x: -300 }}
+      whileInView={{ x: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       {item.icon}
       <Style.ObjectivesTitle>{item.title}</Style.ObjectivesTitle>
       <Style.ObjectivesText>{item.text}</Style.ObjectivesText>
@@ -50,7 +71,11 @@ export default function Page() {
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
           >
-            <Image src={BillImage} alt="bill" style={BillImg} />
+            <Image
+              src={BillImage}
+              alt="bill"
+              style={isMobile ? BillImgMobile : BillImg}
+            />
           </Style.BillImgContainer>
           <Style.IntroContainer
             initial={{ x: -300 }}
@@ -117,4 +142,17 @@ const BillImg = {
   zIndex: 1,
   borderRadius: "25px",
   boxShadow: "1px 1px 15px black",
+}
+
+const BillImgMobile = {
+  display: "flex",
+  position: "absolute",
+  zIndex: 1,
+  borderRadius: "25px",
+  boxShadow: "1px 1px 15px black",
+  width: "300px",
+  height: "450px",
+  top: 500,
+  right: "50%",
+  transform: "translateX(50%)",
 }

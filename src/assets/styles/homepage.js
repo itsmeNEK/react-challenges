@@ -3,9 +3,11 @@ const { motion } = require("framer-motion")
 export const HeaderContainer = styled.div`
   width: 100%;
   height: 1050px;
-  /* @media screen and (max-width: 540px) {
+
+  @media screen and (max-width: 540px) {
     height: 100vh;
-  } */
+    width: 100%;
+  }
 `
 
 export const HeaderBG = styled.div`
@@ -13,12 +15,20 @@ export const HeaderBG = styled.div`
   width: 100%;
   height: 800px;
   background-color: hsl(256, 26%, 20%);
+
+  @media screen and (max-width: 540px) {
+    height: 500px;
+  }
 `
 export const IntroContainer = styled(motion.div)`
   width: 80%;
   margin: auto;
   position: relative;
   top: 30%;
+
+  @media screen and (max-width: 540px) {
+    top: 20%;
+  }
 `
 export const BillImgContainer = styled(motion.div)``
 export const LineDivider = styled.hr`
@@ -27,12 +37,20 @@ export const LineDivider = styled.hr`
   width: 300px;
   color: hsl(216, 30%, 68%);
   background-color: hsl(216, 30%, 68%);
+
+  @media screen and (max-width: 540px) {
+    width: 100px;
+  }
 `
 export const IntroTitle = styled.h1`
   font-size: 5rem;
   font-family: "Courier New", Courier, monospace;
   color: white;
   margin-bottom: 0;
+
+  @media screen and (max-width: 540px) {
+    font-size: 1.5rem;
+  }
 `
 export const IntroParagraph = styled.p`
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -40,6 +58,10 @@ export const IntroParagraph = styled.p`
   width: 650px;
   font-size: 18px;
   color: lightgray;
+
+  @media screen and (max-width: 540px) {
+    width: 100%;
+  }
 `
 
 export const ObjectiveContainer = styled(motion.div)`
@@ -57,10 +79,19 @@ export const ObjectivesGridContainer = styled.div`
   margin: 4rem 0;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 540px) {
+    display: block;
+  }
 `
-export const Objectives = styled.div`
+export const Objectives = styled(motion.div)`
   width: 30%;
   margin: 15px 3rem;
+  @media screen and (max-width: 540px) {
+    width: 100%;
+    margin: auto;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
 `
 export const ObjectivesTitle = styled.h1`
   font-size: 1.5rem;
@@ -85,6 +116,11 @@ export const ContactContainer = styled(motion.div)`
   padding: 0 3rem;
   background-color: hsl(256, 26%, 20%);
   overflow: hidden;
+  @media screen and (max-width: 540px) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    display: block;
+  }
 `
 
 export const ContactTitle = styled.h1`
@@ -94,6 +130,13 @@ export const ContactTitle = styled.h1`
   margin-left: 3rem;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: white;
+  @media screen and (max-width: 540px) {
+    font-size: 2rem;
+    display: block;
+    margin-left: 0;
+    margin: 5rem auto;
+    text-align: center;
+  }
 `
 export const ContactMeBtn = styled.button`
   margin-right: 3rem;
@@ -112,6 +155,11 @@ export const ContactMeBtn = styled.button`
     background-color: lightgray;
     transition: 500ms;
   }
+  @media screen and (max-width: 540px) {
+    display: block;
+    z-index: 4;
+    margin: 5rem auto;
+  }
 `
 
 const ContactRight = {
@@ -119,11 +167,31 @@ const ContactRight = {
   top: 0,
   right: 0,
 }
+const mobileContactRight = {
+  // width: "350",
+  // height: "500",
+  // display: "flex",
+  // position: "absolute",
+  // right: 0,
+  // zIndex: 1,
+  display: "none",
+}
 const PatternRight = {
+  width: "436",
+  height: "593",
   display: "flex",
   position: "absolute",
   right: 0,
   zIndex: 2,
+}
+const mobilePatternRight = {
+  // width: "350",
+  // height: "500",
+  // display: "flex",
+  // position: "absolute",
+  // right: 0,
+  // zIndex: 1,
+  display: "none",
 }
 
 const PatternLeft = {
@@ -132,6 +200,15 @@ const PatternLeft = {
   left: 0,
   top: 600,
 }
+const mobilePatternLeft = {
+  // width: "350",
+  // height: "500",
+  // display: "flex",
+  // position: "absolute",
+  // right: 0,
+  // zIndex: 1,
+  display: "none",
+}
 
 export const ContactPattern = () => {
   return (
@@ -139,7 +216,7 @@ export const ContactPattern = () => {
       xmlns="http://www.w3.org/2000/svg"
       width="434"
       height="350"
-      style={ContactRight}
+      style={window.innerWidth <= 540 ? mobileContactRight : ContactRight}
     >
       <g fill="none" fillRule="evenodd" stroke="#9E96C6">
         <path d="M374.872-183.487c-83.088-26.03-168.523-69.446-255.99 9.854C31.415-94.333-23.575-24.865 11.936 65.016c35.51 89.881 180.463 33.898 222.58 114.23 42.116 80.332-50.424 153.24-10.528 224.736 39.896 71.496 70.573 117.318 198.785 71.859 128.212-45.46 116.391-161.127 213.89-228.861 97.5-67.734 202.988-169.134 58.222-350.07-144.766-180.935-236.925-54.367-320.013-80.397z" />
@@ -156,9 +233,7 @@ export const IntroPatternRight = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="436"
-      height="593"
-      style={PatternRight}
+      style={window.innerWidth <= 540 ? mobilePatternRight : PatternRight}
     >
       <g fill="none" fillRule="evenodd" stroke="#96A9C6">
         <path d="M341.639-24.675c-75.703-23.693-153.543-63.212-233.235 8.97C28.71 56.477-21.39 119.709 10.964 201.522c32.354 81.814 164.422 30.855 202.794 103.977 38.373 73.122-45.94 139.485-9.591 204.563 36.35 65.078 64.3 106.787 181.115 65.409 116.816-41.379 106.045-146.664 194.878-208.318 88.833-61.654 184.944-153.953 53.046-318.647S417.341-.98 341.64-24.674z" />
@@ -178,7 +253,7 @@ export const IntroPatternLeft = () => {
       xmlns="http://www.w3.org/2000/svg"
       width="195"
       height="504"
-      style={PatternLeft}
+      style={window.innerWidth <= 540 ? mobilePatternLeft : PatternLeft}
     >
       <g fill="none" fillRule="evenodd" stroke="#9E96C6">
         <path d="M-162.361 17.325c-75.703-23.693-153.543-63.212-233.235 8.97-79.693 72.182-129.794 135.414-97.44 217.227 32.354 81.814 164.422 30.855 202.794 103.977 38.373 73.122-45.94 139.485-9.591 204.563 36.35 65.078 64.3 106.787 181.115 65.409C-1.902 576.092-12.673 470.807 76.16 409.153c88.833-61.654 184.944-153.953 53.046-318.647S-86.659 41.02-162.36 17.326z" />
