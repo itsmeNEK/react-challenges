@@ -1,9 +1,7 @@
 "use client"
 
-import styles from "@/assets/challenge1/styles.module.css"
 import Image from "next/image"
-import CardHeaderImg from "@/assets/challenge1/images/illustration-article.svg"
-import Avatar from "@/assets/challenge1/images/image-avatar.webp"
+import Avatar from "@/assets/challenge1/image-avatar.webp"
 import * as Style from "@/assets/styles/n-challenge1"
 
 export default function Page() {
@@ -11,12 +9,8 @@ export default function Page() {
     <>
       <Style.Container>
         <Style.Card>
-          <Image
-            className={styles.card_header}
-            src={CardHeaderImg}
-            alt="Card Header"
-          />
           <Style.CardBody>
+            <Style.CardHeader />
             <Style.Button>Learning</Style.Button>
             <h5>Publish 21 Dec 2023</h5>
             <Style.CardTextHeading>
@@ -28,11 +22,17 @@ export default function Page() {
             </Style.CardBodyText>
           </Style.CardBody>
           <Style.CardFooter>
-            <Image src={Avatar} className={styles.avatar} alt="Avatar" />
+            <Image src={Avatar} style={avatar} alt="Avatar" />
             <p>Greg Hooper</p>
           </Style.CardFooter>
         </Style.Card>
       </Style.Container>
     </>
   )
+}
+
+const avatar = {
+  marginRight: "1rem",
+  width: "3rem",
+  height: "3rem",
 }
