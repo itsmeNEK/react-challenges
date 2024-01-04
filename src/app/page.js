@@ -8,13 +8,15 @@ import { useRouter } from "next/navigation"
 
 export default function Page() {
   const router = useRouter()
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 540)
+  const [isMobile, setIsMobile] = useState(false)
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 540)
   }
+
   useEffect(() => {
-    // Attach event listener for window resize
+    // Check if window is defined before using it
+    handleResize() // Initial check
     window.addEventListener("resize", handleResize)
 
     // Cleanup the event listener on component unmount
@@ -49,7 +51,6 @@ export default function Page() {
   const renderAbout = abouts.map((item, index) => (
     <Style.Objectives
       key={index}
-      
       initial={{ x: -300 }}
       whileInView={{ x: 0 }}
       transition={{ duration: 0.5 }}
