@@ -8,18 +8,15 @@ import { useRouter } from "next/navigation"
 
 export default function Page() {
   const router = useRouter()
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(true)
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 540)
   }
 
   useEffect(() => {
-    // Check if window is defined before using it
     handleResize() // Initial check
     window.addEventListener("resize", handleResize)
-
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize)
     }

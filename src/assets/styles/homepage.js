@@ -212,24 +212,20 @@ const mobilePatternLeft = {
 }
 
 export const ContactPattern = () => {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(true)
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 540)
+  }
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 540)
-    }
-
-    // Check if window is defined before using it
     handleResize() // Initial check
     window.addEventListener("resize", handleResize)
-
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize)
     }
   }, [])
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="434"
@@ -245,28 +241,23 @@ export const ContactPattern = () => {
           <path d="M440.955-42.498c-29.325-9.164-59.479-24.448-90.35 3.469-30.87 27.916-50.278 52.37-37.745 84.012 12.533 31.641 63.693 11.933 78.557 40.213 14.865 28.28-17.796 53.946-3.715 79.115 14.08 25.169 24.908 41.3 70.16 25.296 45.25-16.003 41.078-56.722 75.49-80.566C567.763 85.196 604.994 49.5 553.9-14.196 502.807-77.89 470.28-33.335 440.955-42.498z" />
         </g>
       </svg>
-    </Suspense>
   )
 }
 export const IntroPatternRight = () => {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(true)
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 540)
+  }
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 540)
-    }
-
-    // Check if window is defined before using it
     handleResize() // Initial check
     window.addEventListener("resize", handleResize)
-
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize)
     }
   }, [])
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         style={isMobile ? mobilePatternRight : PatternRight}
@@ -280,29 +271,24 @@ export const IntroPatternRight = () => {
           <path d="M401.225 103.406c-26.718-8.36-54.191-22.305-82.318 3.165-28.127 25.47-45.81 47.78-34.39 76.649 11.419 28.868 58.03 10.887 71.574 36.688 13.544 25.8-16.214 49.217-3.385 72.18 12.83 22.963 22.694 37.68 63.923 23.08 41.229-14.6 37.428-51.75 68.78-73.505 31.353-21.755 65.275-54.323 18.723-112.435-46.553-58.112-76.188-17.462-102.907-25.822z" />
         </g>
       </svg>
-    </Suspense>
   )
 }
 
 export const IntroPatternLeft = () => {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(true)
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 540)
+  }
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 540)
-    }
-
-    // Check if window is defined before using it
     handleResize() // Initial check
     window.addEventListener("resize", handleResize)
-
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize)
     }
   }, [])
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="195"
@@ -318,7 +304,6 @@ export const IntroPatternLeft = () => {
           <path d="M-102.775 145.406c-26.718-8.36-54.191-22.305-82.318 3.165-28.127 25.47-45.81 47.78-34.39 76.649 11.419 28.868 58.03 10.887 71.574 36.688 13.544 25.8-16.214 49.217-3.385 72.18 12.83 22.963 22.694 37.68 63.923 23.08 41.229-14.6 37.428-51.75 68.78-73.505C12.762 261.908 46.684 229.34.132 171.228c-46.553-58.112-76.188-17.462-102.907-25.822z" />
         </g>
       </svg>
-    </Suspense>
   )
 }
 
